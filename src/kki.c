@@ -6,7 +6,7 @@
 #include "defs.h"
 #include "misc.h"
 
-
+int trenutno = 0;
 void menu_ispis(const Menu m)
 {
     switch (m) {
@@ -34,7 +34,7 @@ void menu_ispis(const Menu m)
             break;
 
         case transakcioni_meni:
-            ocisti_ekran();
+
             puts("====================================================================");
             puts("MENI Transakciona datoteka");
             puts("====================================================================");
@@ -48,7 +48,7 @@ void menu_ispis(const Menu m)
             break;
 
         case maticni_meni:
-            ocisti_ekran();
+
             puts("================================================================================");
             puts("MENI Maticna datoteka");
             puts("================================================================================");
@@ -65,7 +65,7 @@ void menu_ispis(const Menu m)
             break;
 
         case pomocni_meni:
-            ocisti_ekran();
+
             puts("MENI Pomoc");
             puts("==================================");
             puts("0. Povratak");
@@ -80,9 +80,11 @@ void menu_ispis(const Menu m)
 Menu stanje = glavni_meni;
 
 void transakcioni_podmeni(int izbor) {
+    trenutno = 1;
     switch (izbor) {
         case 0:
             stanje = glavni_meni;
+            trenutno = 0;
             return;
         case 1: //create trans dat
             puts("create");
@@ -108,9 +110,11 @@ void transakcioni_podmeni(int izbor) {
 }
 
 void maticni_podmeni(int izbor) {
+    trenutno = 1;
     switch (izbor) {
         case 0:
             stanje = glavni_meni;
+            trenutno = 0;
             return;
         case 1: //create trans dat
             puts("create");
@@ -143,9 +147,11 @@ void maticni_podmeni(int izbor) {
     }
 }
 void pomoc_podmeni(int izbor) {
+    trenutno = 1;
     switch (izbor) {
         case 0:
             stanje = glavni_meni;
+            trenutno = 0;
             return;
         case 1: //o azuriranju
             puts("o azuriranju");
@@ -166,29 +172,29 @@ void pomoc_podmeni(int izbor) {
 
 void menu() {
     stanje = glavni_meni;
-    while (true)
-    {
-        ocisti_ekran();
-        menu_ispis(stanje);
-        int izbor;
-        scanf("%d",&izbor);
+    while (true) {
 
+        if (trenutno == 0) {
+            ocisti_ekran();
+            menu_ispis(stanje);
+        }int izbor;
+        scanf("%d", &izbor);
 
         switch (stanje) {
             case glavni_meni:
                 switch (izbor) {
-                case 0:
-                    return;
-                case 1:
-                    stanje = transakcioni_meni;
-                    continue;
-                case 2:
-                    stanje = maticni_meni;
-                    continue;
-                case 3:
-                    stanje = pomocni_meni;
-                    continue;
-                default:
+                    case 0:
+                        return;
+                    case 1:
+                        stanje = transakcioni_meni;
+                        continue;
+                    case 2:
+                        stanje = maticni_meni;
+                        continue;
+                    case 3:
+                        stanje = pomocni_meni;
+                        continue;
+                    default:
                         puts("Selektujte odgovarajuci meni.");
                         continue;
                 }
