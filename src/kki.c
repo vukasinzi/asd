@@ -2,7 +2,7 @@
 #include "kki.h"
 
 #include <stdbool.h>
-
+#include "datoteka.h"
 #include "defs.h"
 #include "misc.h"
 
@@ -117,7 +117,8 @@ void maticni_podmeni(int izbor) {
             trenutno = 0;
             return;
         case 1: //create trans dat
-            puts("create");
+            if (kreiraj_datoteku(mat_dat))
+                puts("kreiran");
             break;
         case 2: //drop
             puts("drop");
@@ -171,6 +172,7 @@ void pomoc_podmeni(int izbor) {
 
 
 void menu() {
+
     stanje = glavni_meni;
     while (true) {
 
