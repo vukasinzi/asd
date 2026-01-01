@@ -6,4 +6,5 @@ void set_paths(const char *date);
 void ocisti_ekran();
 void datum();
 void kreiraj_foldere();
+void podesavanje();
 #endif

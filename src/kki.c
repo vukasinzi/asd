@@ -108,7 +108,7 @@ void transakcioni_podmeni(int izbor) {
     }
 
 }
-
+//################################################################3MATICNA####################################################################
 void maticni_podmeni(int izbor) {
     trenutno = 1;
     switch (izbor) {
@@ -116,15 +116,37 @@ void maticni_podmeni(int izbor) {
             stanje = glavni_meni;
             trenutno = 0;
             return;
-        case 1: //create trans dat
+        case 1:
             if (kreiraj_datoteku(mat_dat))
-                puts("kreiran");
+                puts("INFO: Maticna datoteka je kreirana.");
+            else
+                puts("ERROR: Maticna datoteka nije kreirana.");
             break;
         case 2: //drop
-            puts("drop");
+            if (unisti_datoteku(mat_dat))
+                puts("INFO: Maticna datoteka je obrisana.");
+            else
+                puts("ERROR: Maticna datoteka nije obrisana.");
+
             break;
         case 3: //insert
-            puts("insert");
+            PROIZVOD p;
+            printf("Unesite kolicinu: ");
+            if (scanf("%u",&p.Kolicina)!= 1)
+            {
+                puts("ERROR: Pogresan format. akcija se obustavlja.");
+                break;
+            }
+            printf("Unesite naziv proizvoda: ");
+            if (scanf("%14s",p.Naziv)!= 1)
+            {
+                puts("ERROR: Pogresan format. akcija se obustavlja.");
+                break;
+            }
+            if (insert_u_datoteku(mat_dat,&p))
+                puts("INFO: Unesen proizvod u maticnu datoteku.");
+            else
+                puts("ERROR: Greska pri unosu u maticnu datoteku.");
             break;
         case 4: //delete
             puts("delete");
@@ -147,6 +169,7 @@ void maticni_podmeni(int izbor) {
 
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void pomoc_podmeni(int izbor) {
     trenutno = 1;
     switch (izbor) {

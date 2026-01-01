@@ -6,9 +6,9 @@
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
   </component>
@@ -27,11 +27,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asd/data/maticna.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/datoteka.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/defs.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/misc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +56,7 @@
     <option name="directoryName" value="19cJ5nrb" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -71,6 +74,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "CMake Application.main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -92,7 +96,7 @@
     "nodejs_package_manager_path": "npm",
     "org.rust.first.attach.projects": "true",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -122,7 +126,9 @@
       <updated>1766927242670</updated>
       <workItem from="1766927243375" duration="327000" />
       <workItem from="1766927592645" duration="50000" />
-      <workItem from="1766927646606" duration="18478000" />
+      <workItem from="1766927646606" duration="20671000" />
+      <workItem from="1767005429869" duration="2077000" />
+      <workItem from="1767298976362" duration="8110000" />
     </task>
     <servers />
   </component>
@@ -133,5 +139,16 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

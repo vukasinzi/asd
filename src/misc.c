@@ -3,7 +3,7 @@
 #include "misc.h"
 #include <sys/types.h>
 #include <sys/stat.h>
-
+#include "datoteka.h"
 
 
 void ocisti_ekran() {
@@ -34,5 +34,10 @@ void kreiraj_foldere() {
     mkdir("../asd/rpt", 0755);
 #endif
 }
-
+void podesavanje() {
+    kreiraj_foldere();
+    char dat[7];
+    datum(dat);
+    podesi_pathove(dat);
+}
 

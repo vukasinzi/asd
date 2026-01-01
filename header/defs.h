@@ -29,6 +29,7 @@ typedef struct proizvod {
     char Naziv[15];
     unsigned Kolicina;
 } PROIZVOD;
+
 typedef struct transakcija {
     unsigned Id;
     PROMENA Promena;

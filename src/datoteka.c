@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "datoteka.h"
 #include <ctype.h>
-
+#include <defs.h>
+#include <string.h>
 char mat_dat[256];
 char tran_dat[256];
 char mat_tek[256];
@@ -13,6 +14,7 @@ char prom_rpt[256];
 char err_kol_rpt[256];
 char nov_pro_rpt[256];
 char err_pro_rpt[256];
+
 
 void podesi_pathove(const char *date) {
     snprintf(mat_dat, sizeof mat_dat, "..%sasd%sdata%smaticna.dat", SEP, SEP, SEP);
@@ -38,7 +40,7 @@ bool kreiraj_datoteku(char* putanja) {
         printf("Datoteka vec postoji, pregaziti je?(d/n)");
         if (scanf(" %c",&c)!=1) return false;
         while ((getchar()) != '\n'){}//ciscenje buffera
-        if (tolower(c) =='n')return false;
+        if (tolower(c) !='d')return false;
     }
     FILE *fajl = fopen(putanja,"wb");
     if (fajl == NULL)
@@ -46,5 +48,33 @@ bool kreiraj_datoteku(char* putanja) {
     fclose(fajl);
     return true;
 }
+bool unisti_datoteku(char* putanja) {
+    if (!postoji(putanja))
+        return false;
+    if (remove(putanja)==0)
+        return true;
+    return false;
+}
 
-
+bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
+    if (!postoji(putanja))
+        kreiraj_datoteku(putanja);
+    unsigned poslednji_id = 0;
+    FILE *fajl = fopen(putanja, "rb");
+    PROIZVOD p;
+    PROIZVOD poslednji;
+    while (fread(&p, sizeof(p), 1, fajl)==1) {
+        poslednji_id = p.Id;
+    }
+    poslednji_id++;
+    poslednji.Id = poslednji_id;
+    //pisanje
+    fclose(fajl);
+    fajl = fopen(putanja, "ab");
+    if (fajl == NULL || fwrite(proizvod, sizeof(*proizvod), 1, fajl) != 1) {
+        fclose(fajl);
+        return false;
+    }
+    fclose(fajl);
+    return true;
+}
