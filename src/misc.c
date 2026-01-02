@@ -23,15 +23,13 @@ void datum(char out[7]) {
 
 void kreiraj_foldere() {
 #ifdef _WIN32
-    _mkdir("..\\asd");
-    _mkdir("..\\asd\\data");
-    _mkdir("..\\asd\\data\\old");
-    _mkdir("..\\asd\\rpt");
+    _mkdir("..\\data");
+    _mkdir("..\\data\\old");
+    _mkdir("..\\rpt");
 #else
-    mkdir("../asd", 0755);
-    mkdir("../asd/data", 0755);
-    mkdir("../asd/data/old", 0755);
-    mkdir("../asd/rpt", 0755);
+    mkdir("../data", 0755);
+    mkdir("../data/old", 0755);
+    mkdir("../rpt", 0755);
 #endif
 }
 void podesavanje() {

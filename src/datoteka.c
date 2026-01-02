@@ -21,15 +21,16 @@ void ocisti_bafer() {
 }
 
 void podesi_pathove(const char *date) {
-    snprintf(mat_dat, sizeof mat_dat, "..%sasd%sdata%smaticna.dat", SEP, SEP, SEP);
-    snprintf(tran_dat, sizeof tran_dat, "..%sasd%sdata%stransakciona.dat", SEP, SEP, SEP);
-    snprintf(mat_tek, sizeof mat_tek, ".%sasd%sdata%sold%smat_%s.dat", SEP, SEP, SEP, SEP, date);
-    snprintf(tran_tek, sizeof tran_tek, ".%sasd%sdata%sold%stran_%s.dat", SEP, SEP, SEP, SEP, date);
-    snprintf(mat_nova, sizeof mat_nova, ".%sasd%sdata%smaticna.dat", SEP, SEP, SEP);
-    snprintf(prom_rpt, sizeof prom_rpt, ".%sasd%srpt%sprom_%s.rpt", SEP, SEP, SEP, date);
-    snprintf(err_kol_rpt, sizeof err_kol_rpt, ".%sasd%srpt%serr_kol_%s.rpt", SEP, SEP, SEP, date);
-    snprintf(nov_pro_rpt, sizeof nov_pro_rpt, ".%sasd%srpt%snov_pro_%s.rpt", SEP, SEP, SEP, date);
-    snprintf(err_pro_rpt, sizeof err_pro_rpt, ".%sasd%srpt%serr_pro_%s.rpt", SEP, SEP, SEP, date);
+    snprintf(mat_dat, sizeof mat_dat, "..%sdata%smaticna.dat", SEP, SEP);
+    snprintf(tran_dat, sizeof tran_dat, "..%sdata%stransakciona.dat", SEP, SEP);
+    snprintf(mat_tek, sizeof mat_tek, ".%sdata%sold%smat_%s.dat", SEP, SEP, SEP, date);
+    snprintf(tran_tek, sizeof tran_tek, ".%sdata%sold%stran_%s.dat", SEP, SEP, SEP, date);
+    snprintf(mat_nova, sizeof mat_nova, ".%sdata%smaticna.dat", SEP, SEP);
+    snprintf(prom_rpt, sizeof prom_rpt, ".%srpt%sprom_%s.rpt", SEP, SEP, date);
+    snprintf(err_kol_rpt, sizeof err_kol_rpt, ".%srpt%serr_kol_%s.rpt", SEP, SEP, date);
+    snprintf(nov_pro_rpt, sizeof nov_pro_rpt, ".%srpt%snov_pro_%s.rpt", SEP, SEP, date);
+    snprintf(err_pro_rpt, sizeof err_pro_rpt, ".%srpt%serr_pro_%s.rpt", SEP, SEP, date);
+
 }
 bool postoji(char * putanja) {
     FILE* fajl = fopen(putanja,"rb");
@@ -56,7 +57,6 @@ bool unisti_datoteku(char* putanja) {
     if (!postoji(putanja))
         return false;
     if (remove(putanja)==0) {
-        kreiraj_datoteku(putanja);
         return true;
     }return false;
 }
@@ -85,6 +85,20 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
     sortiraj_fajl(putanja);
     return true;
 }
+bool insert_u_datoteku_tran(char* putanja, TRANSAKCIJA* transakcija) {
+    if (!postoji(putanja))
+        kreiraj_datoteku(putanja);
+    TRANSAKCIJA t;
+
+    FILE *fajl = fopen(putanja, "ab");
+    if (fajl == NULL || fwrite(transakcija, sizeof(*transakcija), 1, fajl) != 1) {
+        fclose(fajl);
+        return false;
+    }
+    fclose(fajl);
+    return true;
+}
+
 bool ucitaj_sve(char* putanja) {
     if (!postoji(putanja))
         return false;
@@ -98,6 +112,25 @@ bool ucitaj_sve(char* putanja) {
     fclose(fajl);
     return flag;
 }
+bool ucitaj_sve_tran(char* putanja) {
+    if (!postoji(putanja))
+        return false;
+    FILE* fajl = fopen(putanja, "rb");
+    TRANSAKCIJA t;
+    bool flag = false;
+    while (fread(&t,sizeof(t),1,fajl)) {
+        flag = true;
+        char mod[6];
+        if (t.Promena == ULAZ)
+            strcpy(mod,"ULAZ");
+        else
+            strcpy(mod,"IZLAZ");
+        printf("Id:%u, PROMENA: %s, Kolicina: %u\n",t.Id,mod,t.Kolicina);
+    }
+    fclose(fajl);
+    return flag;
+}
+
 bool ucitaj_Id(char* putanja,unsigned id) {
     if (!postoji(putanja))
         return false;
@@ -113,7 +146,38 @@ bool ucitaj_Id(char* putanja,unsigned id) {
     fclose(fajl);
     return flag;
 }
+bool ucitaj_Id_tran(char* putanja,unsigned id) {
+    if (!postoji(putanja))
+        return false;
+    FILE * fajl = fopen(putanja,"rb");
+    TRANSAKCIJA t;
+    int i = 0;
+    while (fread(&t, sizeof(t),1,fajl)) {
+        if (t.Id == id) {
+           i++;
+        }
+    }
+    TRANSAKCIJA *t_niz = malloc(i*sizeof(TRANSAKCIJA));
+    rewind(fajl);
+    int j = 0;
+    while (fread(&t, sizeof(t),1,fajl)) {
+        if (t.Id == id) {
+            t_niz[j++] = t;
+        }
+    }
+    for (int j = 0; j < i;j++) {
+        char mod[5];
+        if (t_niz[j].Promena == ULAZ)
+            strcpy(mod,"ULAZ");
+        else
+            strcpy(mod,"IZLAZ");
+        printf("Id:%u, PROMENA: %s, Kolicina: %u\n",t_niz[j].Id,mod,t_niz[j].Kolicina);
+    }
+    free(t_niz);
+    fclose(fajl);
+    return true;
 
+}
 bool obrisi_Id(char* putanja,unsigned id) {
     if (!postoji(putanja))
         return false;
@@ -161,9 +225,9 @@ void sortiraj_fajl(char* putanja) {
     }
     fclose(fajl);
 
-    for (int x = 0;x < i;x++) {
-        for (int y = 0;y<i;y++) {
-            if (niz_p[x].Id != niz_p[y].Id && niz_p[x].Id < niz_p[y].Id) {
+    for (int x = 0;x < i-1;x++) {
+        for (int y = x+1;y<i;y++) {
+            if (niz_p[x].Id > niz_p[y].Id) {
                 PROIZVOD privremeni = niz_p[x];
                 niz_p[x] = niz_p[y];
                 niz_p[y] = privremeni;

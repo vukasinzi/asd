@@ -87,19 +87,67 @@ void transakcioni_podmeni(int izbor) {
             trenutno = 0;
             return;
         case 1: //create trans dat
-            puts("create");
+            if (kreiraj_datoteku(tran_dat))
+                puts("INFO: Transakciona datoteka je kreirana.");
+            else
+                puts("ERROR: Transakciona datoteka nije kreirana.");
             break;
         case 2: //drop
-            puts("drop");
+            if (unisti_datoteku(tran_dat))
+                puts("INFO: Transakciona datoteka je obrisana.");
+            else
+                puts("ERROR: Transakciona datoteka nije obrisana.");
             break;
         case 3: //insert
-            puts("insert");
+
+            TRANSAKCIJA t;
+            printf("Unesite id: ");
+            if (scanf("%u",&t.Id)!= 1)
+            {
+                ocisti_bafer();
+                puts("ERROR: Pogresan format. akcija se obustavlja.");
+                break;
+            }
+            ocisti_bafer();
+
+            printf("Unesite naziv promene (1 ULAZ, -1 IZLAZ): ");
+            if (scanf("%d",&t.Promena)!= 1 || (t.Promena != 1 && t.Promena != -1))
+            {
+                ocisti_bafer();
+                puts("ERROR: Pogresan format. Promena mora biti 1 ili -1");
+                break;
+            }
+            ocisti_bafer();
+
+            printf("Unesite kolicinu: ");
+            if (scanf("%u",&t.Kolicina)!= 1)
+            {
+                ocisti_bafer();
+                puts("ERROR: Pogresan format. Kolicina mora biti broj.");
+                break;
+            }
+            ocisti_bafer();
+            if (insert_u_datoteku_tran(tran_dat,&t))
+                puts("INFO: Unesen proizvod u transakcionu datoteku.");
+            else
+                puts("ERROR: Greska pri unosu u transakcionu datoteku.");
+
             break;
         case 4: //select
-            puts("select");
+            if (!ucitaj_sve_tran(tran_dat))
+                puts("ERROR: Greska pri citanju transakcione datoteke.");
             break;
         case 5: //select id
-            puts("select id");
+            printf("Unesite id po kome pretrazujete: ");
+            unsigned id2;
+            if (scanf("%u",&id2) != 1) {
+                ocisti_bafer();
+                puts("ERROR: Pogresan format. Promena mora biti 1 ili -1");
+                break;
+            }
+            ocisti_bafer();
+            if (!ucitaj_Id_tran(tran_dat,id2))
+                puts("ERROR: Greska pri citanju transakcione datoteke.");
             break;
         default:
             puts("Selektujte odgovarajucu opciju.");

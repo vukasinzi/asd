@@ -28,8 +28,12 @@
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asd/data/maticna.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/header/datoteka.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +47,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "vukasinzi"
+  }
+}]]></component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="6c2f0992-3149-4bdc-93f3-43a2582b53f8" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/vukasinzi/ASD.git",
+    "accountId": "6c2f0992-3149-4bdc-93f3-43a2582b53f8"
+  }
+}]]></component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="19cJ5nrb" />
   </component>
@@ -81,7 +97,7 @@
     "RunOnceActivity.west.config.association.type.startup.service": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "vukasin-grana",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/bambi/Desktop/prp-projekat",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -100,9 +116,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="prp_projekat" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="prp_projekat" RUN_TARGET_NAME="main">
@@ -123,6 +139,7 @@
       <workItem from="1766927646606" duration="20671000" />
       <workItem from="1767005429869" duration="2077000" />
       <workItem from="1767298976362" duration="19703000" />
+      <workItem from="1767361517021" duration="6110000" />
     </task>
     <servers />
   </component>
@@ -144,5 +161,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/datoteka.c</url>
+          <line>64</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
