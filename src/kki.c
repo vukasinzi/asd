@@ -131,14 +131,14 @@ void maticni_podmeni(int izbor) {
             break;
         case 3: //insert
             PROIZVOD p;
-            printf("Unesite kolicinu: ");
-            if (scanf("%u",&p.Kolicina)!= 1)
+            printf("Unesite naziv proizvoda: ");
+            if (scanf("%14s",p.Naziv)!= 1)
             {
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
-            printf("Unesite naziv proizvoda: ");
-            if (scanf("%14s",p.Naziv)!= 1)
+            printf("Unesite kolicinu: ");
+            if (scanf("%u",&p.Kolicina)!= 1)
             {
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
@@ -158,10 +158,16 @@ void maticni_podmeni(int izbor) {
             puts("update id");
             break;
         case 7: //select
-            puts("select");
+            if (!ucitaj_sve(mat_dat))
+               puts("ERROR: Greska pri citanju maticne datoteke.");
+
             break;
         case 8: //select id
-            puts("select id");
+            printf("Unesite id po kome pretrazujete: ");
+            unsigned id;
+            scanf("%u",&id);
+            if (!ucitaj_Id(mat_dat,id))
+                puts("ERROR: Greska pri citanju maticne datoteke.");
             break;
         default:
             puts("Selektujte odgovarajucu opciju.");

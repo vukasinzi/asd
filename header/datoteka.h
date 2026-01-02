@@ -14,4 +14,6 @@ void podesi_pathove(const char* date);
 bool kreiraj_datoteku(char* putanja);
 bool unisti_datoteku(char* putanja);
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod);
+bool ucitaj_sve(char* putanja);
+bool ucitaj_Id(char* putanja,unsigned id);
 #endif

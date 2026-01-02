@@ -67,7 +67,7 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
         poslednji_id = p.Id;
     }
     poslednji_id++;
-    poslednji.Id = poslednji_id;
+    (*proizvod).Id= poslednji_id;
     //pisanje
     fclose(fajl);
     fajl = fopen(putanja, "ab");
@@ -77,4 +77,32 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
     }
     fclose(fajl);
     return true;
+}
+bool ucitaj_sve(char* putanja) {
+    if (!postoji(putanja))
+        return false;
+    FILE* fajl = fopen(putanja, "rb");
+    PROIZVOD p;
+    bool flag = false;
+   while (fread(&p,sizeof(p),1,fajl)) {
+       flag = true;
+       printf("Id:%u, Naziv: %s, Kolicina: %u\n",p.Id,p.Naziv,p.Kolicina);
+   }
+    fclose(fajl);
+    return flag;
+}
+bool ucitaj_Id(char* putanja,unsigned id) {
+    if (!postoji(putanja))
+        return false;
+    FILE * fajl = fopen(putanja,"rb");
+    PROIZVOD p;
+    bool flag = false;
+    while (fread(&p, sizeof(p),1,fajl)) {
+        if (p.Id == id) {
+            flag = true;
+            printf("Id:%u, Naziv: %s, Kolicina: %u\n",p.Id,p.Naziv,p.Kolicina);
+        }
+    }
+    fclose(fajl);
+    return flag;
 }
