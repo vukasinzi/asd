@@ -131,6 +131,14 @@ void maticni_podmeni(int izbor) {
             break;
         case 3: //insert
             PROIZVOD p;
+            printf("Unesite id: ");
+            if (scanf("%u",&p.Id)!= 1)
+            {
+                ocisti_bafer();
+                puts("ERROR: Pogresan format. akcija se obustavlja.");
+                break;
+            }
+            ocisti_bafer();
             printf("Unesite naziv proizvoda: ");
             if (scanf("%14s",p.Naziv)!= 1)
             {

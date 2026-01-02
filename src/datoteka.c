@@ -64,15 +64,16 @@ bool unisti_datoteku(char* putanja) {
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
     if (!postoji(putanja))
         kreiraj_datoteku(putanja);
-    unsigned poslednji_id = 0;
+
     FILE *fajl = fopen(putanja, "rb");
     PROIZVOD p;
-    PROIZVOD poslednji;
+
     while (fread(&p, sizeof(p), 1, fajl)==1) {
-        poslednji_id = p.Id;
+        if (p.Id == proizvod->Id) {
+            return false;
+        }
     }
-    poslednji_id++;
-    (*proizvod).Id= poslednji_id;
+
     //pisanje
     fclose(fajl);
     fajl = fopen(putanja, "ab");
@@ -81,6 +82,7 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
         return false;
     }
     fclose(fajl);
+    sortiraj_fajl(putanja);
     return true;
 }
 bool ucitaj_sve(char* putanja) {
@@ -139,5 +141,41 @@ bool obrisi_Id(char* putanja,unsigned id) {
     }
     fclose(fajl);
     free(niz_p);
+    sortiraj_fajl(putanja);
     return flag;
+}
+void sortiraj_fajl(char* putanja) {
+    if (!postoji(putanja))
+        return;
+    FILE * fajl = fopen(putanja,"rb");
+    if (!fajl) return;
+    if (fseek(fajl,0,SEEK_END)!= 0) {fclose(fajl);return ;}
+    long velicina_fajla = ftell(fajl);
+    if (velicina_fajla < 0) return;
+    rewind(fajl);
+    PROIZVOD p;
+    PROIZVOD *niz_p = malloc((velicina_fajla/sizeof(PROIZVOD))*sizeof(*niz_p));
+    int i = 0;
+    while (fread(&p,sizeof(p),1,fajl)) {
+      niz_p[i++]=p;
+    }
+    fclose(fajl);
+
+    for (int x = 0;x < i;x++) {
+        for (int y = 0;y<i;y++) {
+            if (niz_p[x].Id != niz_p[y].Id && niz_p[x].Id < niz_p[y].Id) {
+                PROIZVOD privremeni = niz_p[x];
+                niz_p[x] = niz_p[y];
+                niz_p[y] = privremeni;
+            }
+        }
+    }
+    fajl = fopen(putanja,"wb");
+    for (int j = 0;j < i;j++) {
+        fwrite(&niz_p[j],sizeof(*niz_p),1,fajl);
+    }
+    fclose(fajl);
+    free(niz_p);
+
+
 }
