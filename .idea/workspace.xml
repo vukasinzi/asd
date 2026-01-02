@@ -28,8 +28,8 @@
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asd/data/maticna.dat" beforeDir="false" afterPath="$PROJECT_DIR$/asd/data/maticna.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/datoteka.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/misc.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
     </list>
@@ -124,7 +124,7 @@
       <workItem from="1766927592645" duration="50000" />
       <workItem from="1766927646606" duration="20671000" />
       <workItem from="1767005429869" duration="2077000" />
-      <workItem from="1767298976362" duration="11044000" />
+      <workItem from="1767298976362" duration="16296000" />
     </task>
     <servers />
   </component>

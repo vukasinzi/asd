@@ -16,4 +16,7 @@ bool unisti_datoteku(char* putanja);
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod);
 bool ucitaj_sve(char* putanja);
 bool ucitaj_Id(char* putanja,unsigned id);
+bool obrisi_Id(char* putanja,unsigned id);
+
+void ocisti_bafer();
 #endif

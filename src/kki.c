@@ -134,23 +134,39 @@ void maticni_podmeni(int izbor) {
             printf("Unesite naziv proizvoda: ");
             if (scanf("%14s",p.Naziv)!= 1)
             {
+                ocisti_bafer();
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
+            ocisti_bafer();
             printf("Unesite kolicinu: ");
             if (scanf("%u",&p.Kolicina)!= 1)
             {
+                ocisti_bafer();
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
+            ocisti_bafer();
             if (insert_u_datoteku(mat_dat,&p))
                 puts("INFO: Unesen proizvod u maticnu datoteku.");
             else
                 puts("ERROR: Greska pri unosu u maticnu datoteku.");
             break;
         case 4: //delete
-            puts("delete");
+            printf("Unesite id proizvoda kojeg brisete: ");
+            unsigned id;
+            if (scanf("%u", &id) != 1) {
+                puts("ERROR: Unesite broj.");
+                ocisti_bafer();
+                break;
+            }
+            ocisti_bafer();
+            if (!obrisi_Id(mat_dat,id))
+                puts("ERROR: Greska pri citanju maticne datoteke.");
+            else
+                printf("INFO: Uspesno obrisan proizvod sa id: %d\n",id);
             break;
+
         case 5: //update all
             puts("update");
             break;
@@ -164,9 +180,10 @@ void maticni_podmeni(int izbor) {
             break;
         case 8: //select id
             printf("Unesite id po kome pretrazujete: ");
-            unsigned id;
-            scanf("%u",&id);
-            if (!ucitaj_Id(mat_dat,id))
+            unsigned id2;
+            scanf("%u",&id2);
+            ocisti_bafer();
+            if (!ucitaj_Id(mat_dat,id2))
                 puts("ERROR: Greska pri citanju maticne datoteke.");
             break;
         default:
@@ -209,7 +226,13 @@ void menu() {
             ocisti_ekran();
             menu_ispis(stanje);
         }int izbor;
-        scanf("%d", &izbor);
+
+        if (scanf("%d", &izbor) != 1) {
+            puts("ERROR: Unesite broj.");
+            ocisti_bafer();
+            continue;
+        }
+        ocisti_bafer();
 
         switch (stanje) {
             case glavni_meni:

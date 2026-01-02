@@ -7,4 +7,5 @@ void ocisti_ekran();
 void datum();
 void kreiraj_foldere();
 void podesavanje();
+
 #endif

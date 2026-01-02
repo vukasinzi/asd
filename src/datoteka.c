@@ -15,6 +15,10 @@ char err_kol_rpt[256];
 char nov_pro_rpt[256];
 char err_pro_rpt[256];
 
+void ocisti_bafer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
 
 void podesi_pathove(const char *date) {
     snprintf(mat_dat, sizeof mat_dat, "..%sasd%sdata%smaticna.dat", SEP, SEP, SEP);
@@ -51,9 +55,10 @@ bool kreiraj_datoteku(char* putanja) {
 bool unisti_datoteku(char* putanja) {
     if (!postoji(putanja))
         return false;
-    if (remove(putanja)==0)
+    if (remove(putanja)==0) {
+        kreiraj_datoteku(putanja);
         return true;
-    return false;
+    }return false;
 }
 
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
@@ -104,5 +109,35 @@ bool ucitaj_Id(char* putanja,unsigned id) {
         }
     }
     fclose(fajl);
+    return flag;
+}
+
+bool obrisi_Id(char* putanja,unsigned id) {
+    if (!postoji(putanja))
+        return false;
+    FILE * fajl = fopen(putanja,"rb");
+    if (!fajl) return false;
+    if (fseek(fajl,0,SEEK_END)!= 0) {fclose(fajl);return false;}
+    long velicina_fajla = ftell(fajl);
+    if (velicina_fajla < 0) return false;
+    rewind(fajl);
+    PROIZVOD p;
+    PROIZVOD *niz_p = malloc((velicina_fajla/sizeof(PROIZVOD))*sizeof(*niz_p));
+
+    int i = 0;
+    bool flag = false;
+    while (fread(&p,sizeof(p),1,fajl)) {
+        if (p.Id == id) {
+            flag = true;
+            continue;
+        }(niz_p)[i++]=p;
+    }
+    fclose(fajl);
+    fajl = fopen(putanja,"wb");
+    for (int j = 0;j < i;j++) {
+        fwrite(&niz_p[j],sizeof(*niz_p),1,fajl);
+    }
+    fclose(fajl);
+    free(niz_p);
     return flag;
 }
