@@ -28,19 +28,28 @@
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-f48beae1846e6b880e97.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2026-01-02T13-48-11-0917.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/util.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/util.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/maticna.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/maticna.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maticna.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transakciona.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/header/datoteka.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/misc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/util.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +132,11 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="prp_projekat" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="prp_projekat" RUN_TARGET_NAME="main">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -145,7 +159,7 @@
       <workItem from="1767436557661" duration="1322000" />
       <workItem from="1767444367596" duration="15000" />
       <workItem from="1767450175344" duration="879000" />
-      <workItem from="1767599635681" duration="4474000" />
+      <workItem from="1767599635681" duration="19750000" />
     </task>
     <servers />
   </component>

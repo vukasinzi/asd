@@ -7,18 +7,17 @@
 
 
 void ocisti_ekran() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void datum(char out[7]) {
     time_t t = time(NULL);
     struct tm *tmv = localtime(&t);
-    strftime(out, 7, "%y%m%d", tmv);
-
+    strftime(out, 7, "%d%m%y", tmv);
 }
 
 void kreiraj_foldere() {

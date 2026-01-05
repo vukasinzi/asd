@@ -2,6 +2,9 @@
 #include "kki.h"
 #include "misc.h"
 
+
+
+
 int main()
 {
     podesavanje();

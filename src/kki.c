@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "kki.h"
-
+#include <string.h>
 #include <stdbool.h>
 #include "datoteka.h"
 #include "defs.h"
@@ -108,6 +108,11 @@ void transakcioni_podmeni(int izbor) {
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
+            if (t.Id == 0) {
+                puts("ERROR: PREKID");
+                ocisti_bafer();
+                break;
+            }
             ocisti_bafer();
 
             printf("Unesite naziv promene (1 ULAZ, -1 IZLAZ): ");
@@ -134,7 +139,7 @@ void transakcioni_podmeni(int izbor) {
 
             break;
         case 4: //select
-            if (!ucitaj_sve_tran(tran_dat))
+            if (!ucitaj_sve_tran(tran_dat,NULL,NULL))
                 puts("ERROR: Greska pri citanju transakcione datoteke.");
             break;
         case 5: //select id
@@ -186,15 +191,24 @@ void maticni_podmeni(int izbor) {
                 puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
-            ocisti_bafer();
-            printf("Unesite naziv proizvoda: ");
-            if (scanf("%14s",p.Naziv)!= 1)
-            {
+            if (p.Id == 0) {
+                puts("ERROR: PREKID");
                 ocisti_bafer();
-                puts("ERROR: Pogresan format. akcija se obustavlja.");
                 break;
             }
             ocisti_bafer();
+            printf("Unesite naziv proizvoda: ");
+            if (!fgets(p.Naziv, sizeof p.Naziv, stdin)) {
+                puts("ERROR: Pogresan format. akcija se obustavlja.");
+                break;
+            }
+            if (!strchr(p.Naziv,'\n')) {
+                puts("ERROR: Predugacak naziv (14). akcija se obustavlja.");
+                ocisti_bafer();
+                break;
+            }
+            p.Naziv[strcspn(p.Naziv, "\n")] = '\0';
+
             printf("Unesite kolicinu: ");
             if (scanf("%u",&p.Kolicina)!= 1)
             {
@@ -225,12 +239,13 @@ void maticni_podmeni(int izbor) {
 
         case 5: //update all
             puts("update");
+            update();
             break;
         case 6: //update id
             puts("update id");
             break;
         case 7: //select
-            if (!ucitaj_sve(mat_dat))
+            if (!ucitaj_sve(mat_dat,NULL,NULL))
                puts("ERROR: Greska pri citanju maticne datoteke.");
 
             break;
