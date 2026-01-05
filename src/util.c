@@ -23,3 +23,19 @@ bool sadrzi(const TRANSAKCIJA *niz, unsigned id,int n) {
     }
     return false;
 }
+bool sadrzi_p(const PROIZVOD *niz, unsigned id,int n,int *pozicija) {
+    for (int i = 0; i < n;i++) {
+        if (niz[i].Id == id)
+        {
+            *pozicija = i;
+            return true;
+        }
+    }
+    return false;
+}
+void izbaci_element_t(TRANSAKCIJA **niz, int i,int *n) {
+    for (int j = i;j < (*n)-1;j++) {
+        (*niz)[j] = (*niz)[j+1];
+    }
+    (*n)--;
+}

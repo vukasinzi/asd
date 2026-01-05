@@ -26,5 +26,7 @@ bool obrisi_Id(char* putanja,unsigned id);
 void sortiraj_fajl(char* putanja,size_t velicina_sloga,Vrsta v);
 void ocisti_bafer();
 
+void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s);
+void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n);
 void update();
 #endif

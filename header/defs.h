@@ -39,4 +39,7 @@ typedef struct transakcija {
     PROMENA Promena;
     unsigned Kolicina;
 } TRANSAKCIJA;
+
+
+
 #endif

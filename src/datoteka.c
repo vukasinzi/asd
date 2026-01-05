@@ -346,15 +346,66 @@ void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n) {
 
 
 }
+
+void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
+    PROIZVOD *maticni_niz;
+    int p = 0;
+    ucitaj_sve(mat_tek, &maticni_niz, &p);
+    PROIZVOD *novi_niz = malloc((p + s) * sizeof(PROIZVOD));
+    int n = 0;
+
+
+    for (int i = s-1; i >= 0; i--) {
+        int pozicija = 0;
+        if (!sadrzi_p(maticni_niz, sumarni_niz[i].Id, p, &pozicija)) {
+            if (sumarni_niz[i].Promena == IZLAZ) {
+                //OBRADA GRESKE DA NE POSTOJI TAJ ELEMENT KOJI ISKA
+                izbaci_element_t(&sumarni_niz,i,&s);
+            } else {
+                //OVDE TREBA DODATI U MATICNU DATOTEKU PROIZVOD.
+            }
+        }
+    }
+    for (int i = 0; i < p; i++) {
+        bool nadjen = false;
+        for (int j = 0; j < s; j++) {
+            if (maticni_niz[i].Id == sumarni_niz[j].Id) {
+                //slcuaj kada je sve normalno
+                nadjen = true;
+                int pozicija = 0;
+
+                novi_niz[n++] = maticni_niz[i];
+                int suma = (int) novi_niz[n - 1].Kolicina + (int) sumarni_niz[j].Kolicina * sumarni_niz[j].Promena;
+                if (suma >= 0)
+                    novi_niz[n - 1].Kolicina = suma;
+                else {
+                    //greska, ima manje od ukupne kolicine
+                }
+                break;
+            }
+        }
+        if (!nadjen)
+            novi_niz[n++] = maticni_niz[i];
+    }
+    for (int _i = 0; _i < n;_i++)
+    {
+        insert_u_datoteku(mat_nova,&novi_niz[_i]);
+    }
+    free(maticni_niz);
+    free(novi_niz);
+}
+
+
+
 void update(char* putanja) {
     if (!postoji(mat_dat) || !postoji(tran_dat)) {
         printf("Datoteke ne postoje.");
         return;
     }
     kopiraj_datoteku(mat_dat,mat_tek);
-
     TRANSAKCIJA *sumarni_niz;
     int s = 0;
     sumarna_transakciona_datoteka(&sumarni_niz,&s);
+    spoji_sa_maticnom(sumarni_niz,s);
     free(sumarni_niz);
 }

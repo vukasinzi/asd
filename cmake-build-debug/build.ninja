@@ -89,6 +89,14 @@ build CMakeFiles/main.dir/src/util.c.o: C_COMPILER__main_unscanned_Debug /home/b
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src
 
+build CMakeFiles/main.dir/src/vektor.c.o: C_COMPILER__main_unscanned_Debug /home/bambi/Desktop/asd/src/vektor.c || cmake_object_order_depends_target_main
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/main.dir/src/vektor.c.o.d
+  FLAGS = -g -std=gnu17 -fdiagnostics-color=always
+  INCLUDES = -I/home/bambi/Desktop/asd/header
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target main
@@ -97,7 +105,7 @@ build CMakeFiles/main.dir/src/util.c.o: C_COMPILER__main_unscanned_Debug /home/b
 #############################################
 # Link the executable main
 
-build main: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/datoteka.c.o CMakeFiles/main.dir/src/kki.c.o CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/misc.c.o CMakeFiles/main.dir/src/util.c.o
+build main: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/datoteka.c.o CMakeFiles/main.dir/src/kki.c.o CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/misc.c.o CMakeFiles/main.dir/src/util.c.o CMakeFiles/main.dir/src/vektor.c.o
   CONFIG = Debug
   DEP_FILE = CMakeFiles/main.dir/link.d
   FLAGS = -g
