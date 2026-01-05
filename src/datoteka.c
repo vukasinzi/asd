@@ -295,15 +295,7 @@ void sortiraj_fajl(char* putanja,size_t velicina_sloga, const Vrsta v) {
     free(niz);
 }//update maticne
 
-
-void update() {
-    if (!postoji(mat_dat) || !postoji(tran_dat)) {
-        printf("Datoteke ne postoje.");
-        return;
-    }
-    kopiraj_datoteku(mat_dat,mat_tek);
-    kopiraj_datoteku(tran_dat,tran_tek);
-    //sad sledi spajanje datoteka u novu maticnu.
+void sumarna_transakciona_datoteka(char *putanja,TRANSAKCIJA** vraceni_niz, int* n) {
     PROIZVOD *niz_p = NULL;
     TRANSAKCIJA *niz_t = NULL;
     int t = 0;
@@ -311,7 +303,7 @@ void update() {
     ucitaj_sve(mat_tek,&niz_p,&p);
     ucitaj_sve_tran(tran_dat,&niz_t,&t);
 
-    TRANSAKCIJA *novi_niz =malloc(t*sizeof(TRANSAKCIJA));
+    TRANSAKCIJA* novi_niz =malloc(t*sizeof(TRANSAKCIJA));
     int z = 0;
 
     FILE* fajl = fopen(tran_tek,"wb");
@@ -337,23 +329,43 @@ void update() {
             _t.Promena = IZLAZ;
         else
             _t.Promena = ULAZ;
-        _t.Kolicina = _suma;
+        _t.Kolicina = abs(_suma);
         _t.Id = isti_id->Id;
         novi_niz[z++] = _t;
         free(isti_id);
     }
-    /*for (int x = 0; x< z;x++) {
+    qsort(novi_niz,z,sizeof(TRANSAKCIJA),poredi_tran);
+    *vraceni_niz = novi_niz;
+    *n = z;
+    for (int _i = 0;_i< *n;_i++) {
+        fwrite(&vraceni_niz[_i],sizeof(TRANSAKCIJA),1,fajl);
+    }
+
+
+    for (int x = 0; x< z;x++) {
         char mod[6];
         if (novi_niz[x].Promena == ULAZ) strlcpy(mod,"ULAZ",sizeof(mod));
         else strlcpy(mod,"IZLAZ",sizeof(mod));
-        printf("%u, %s, %u\n",novi_niz[x].Id,mod,novi_niz[x].Kolicina*novi_niz[x].Promena);
-    }*/
+
+        printf("%u, %s, %d\n",novi_niz[x].Id,mod,novi_niz[x].Kolicina);
+
+    }
 
     free(niz_p);
     free(niz_t);
-    free(novi_niz);
 
-        // fwrite(&niz_t[i],sizeof(TRANSAKCIJA),1,fajl);
-        // printf("Id:%u, Kolicina: %u\n",niz_t[i].Id,niz_t[i].Kolicina);
 
+}
+void update(char* putanja) {
+    if (!postoji(mat_dat) || !postoji(tran_dat)) {
+        printf("Datoteke ne postoje.");
+        return;
+    }
+    kopiraj_datoteku(mat_dat,mat_tek);
+
+    TRANSAKCIJA *sumarni_niz;
+    int s = 0;
+    sumarna_transakciona_datoteka(putanja,&sumarni_niz,&s);
+
+    free(sumarni_niz);
 }
