@@ -7,5 +7,7 @@ void ocisti_ekran();
 void datum();
 void kreiraj_foldere();
 void podesavanje();
+int poredi_tran(const void *a,const void *b);
+int poredi_proiz(const void *a,const void *b);
 
 #endif

@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <defs.h>
 #include <string.h>
+#include <misc.h>
 char mat_dat[256];
 char tran_dat[256];
 char mat_tek[256];
@@ -61,7 +62,7 @@ bool unisti_datoteku(char* putanja) {
     }return false;
 }
 
-bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
+bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod_) {
     if (!postoji(putanja))
         kreiraj_datoteku(putanja);
 
@@ -69,7 +70,7 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
     PROIZVOD p;
 
     while (fread(&p, sizeof(p), 1, fajl)==1) {
-        if (p.Id == proizvod->Id) {
+        if (p.Id == proizvod_->Id) {
             return false;
         }
     }
@@ -77,12 +78,13 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod) {
     //pisanje
     fclose(fajl);
     fajl = fopen(putanja, "ab");
-    if (fajl == NULL || fwrite(proizvod, sizeof(*proizvod), 1, fajl) != 1) {
+    if (fajl == NULL || fwrite(proizvod_, sizeof(*proizvod_), 1, fajl) != 1) {
         fclose(fajl);
         return false;
     }
     fclose(fajl);
-    sortiraj_fajl(putanja);
+    sortiraj_fajl(putanja,sizeof(PROIZVOD),proizvod);
+
     return true;
 }
 bool insert_u_datoteku_tran(char* putanja, TRANSAKCIJA* transakcija) {
@@ -205,41 +207,39 @@ bool obrisi_Id(char* putanja,unsigned id) {
     }
     fclose(fajl);
     free(niz_p);
-    sortiraj_fajl(putanja);
+    sortiraj_fajl(putanja,sizeof(PROIZVOD),proizvod);
     return flag;
 }
-void sortiraj_fajl(char* putanja) {
+void sortiraj_fajl(char* putanja,size_t velicina_sloga, const Vrsta v) {
     if (!postoji(putanja))
         return;
     FILE * fajl = fopen(putanja,"rb");
     if (!fajl) return;
     if (fseek(fajl,0,SEEK_END)!= 0) {fclose(fajl);return ;}
     long velicina_fajla = ftell(fajl);
+    long broj_slogova = (velicina_fajla/(long)velicina_sloga);
     if (velicina_fajla < 0) return;
     rewind(fajl);
-    PROIZVOD p;
-    PROIZVOD *niz_p = malloc((velicina_fajla/sizeof(PROIZVOD))*sizeof(*niz_p));
-    int i = 0;
-    while (fread(&p,sizeof(p),1,fajl)) {
-      niz_p[i++]=p;
+    void *niz = malloc(broj_slogova*velicina_sloga);
+    const int i = (int)broj_slogova;
+    if (fread(niz,velicina_sloga,broj_slogova,fajl) != (size_t)broj_slogova) {
+        free(niz);
+        fclose(fajl);
+        return;
     }
     fclose(fajl);
-
-    for (int x = 0;x < i-1;x++) {
-        for (int y = x+1;y<i;y++) {
-            if (niz_p[x].Id > niz_p[y].Id) {
-                PROIZVOD privremeni = niz_p[x];
-                niz_p[x] = niz_p[y];
-                niz_p[y] = privremeni;
-            }
+    fajl = fopen(putanja,"wb");
+    if (v == transakcija) {
+        qsort(niz,broj_slogova,velicina_sloga,poredi_tran);
+        for (int j = 0;j < i;j++) {
+            fwrite(&((TRANSAKCIJA*)niz)[j], sizeof(TRANSAKCIJA), 1, fajl);
+        }
+    }else {
+        qsort(niz,broj_slogova,velicina_sloga,poredi_proiz);
+        for (int j = 0;j < i;j++) {
+            fwrite(&((PROIZVOD*)niz)[j], sizeof(PROIZVOD), 1, fajl);
         }
     }
-    fajl = fopen(putanja,"wb");
-    for (int j = 0;j < i;j++) {
-        fwrite(&niz_p[j],sizeof(*niz_p),1,fajl);
-    }
     fclose(fajl);
-    free(niz_p);
-
-
+    free(niz);
 }

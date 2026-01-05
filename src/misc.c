@@ -38,4 +38,15 @@ void podesavanje() {
     datum(dat);
     podesi_pathove(dat);
 }
-
+int poredi_tran(const void *a,const void *b) {
+   TRANSAKCIJA* t1 = a;
+    TRANSAKCIJA* t2 = b;
+    if (t1->Id > t2->Id) return 1;
+    return -1;
+}
+int poredi_proiz(const void *a,const void *b) {
+    PROIZVOD *p1 = a;
+    PROIZVOD *p2 = b;
+    if (p1->Id > p2->Id) return 1;
+    return -1;
+}

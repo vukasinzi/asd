@@ -13,6 +13,10 @@ extern char nov_pro_rpt[256];
 extern char err_pro_rpt[256];
 
 //enumi
+typedef enum vrsta {
+    transakcija = 1,
+    proizvod = 2
+}Vrsta;
 typedef enum menu {
     glavni_meni,
     transakcioni_meni,
