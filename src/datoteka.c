@@ -295,7 +295,7 @@ void sortiraj_fajl(char* putanja,size_t velicina_sloga, const Vrsta v) {
     free(niz);
 }//update maticne
 
-void sumarna_transakciona_datoteka(char *putanja,TRANSAKCIJA** vraceni_niz, int* n) {
+void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n) {
     PROIZVOD *niz_p = NULL;
     TRANSAKCIJA *niz_t = NULL;
     int t = 0;
@@ -308,21 +308,21 @@ void sumarna_transakciona_datoteka(char *putanja,TRANSAKCIJA** vraceni_niz, int*
 
     FILE* fajl = fopen(tran_tek,"wb");
     for (int i = 0;i < t;i++) {
-        int n = 0;
+        int _n = 0;
         TRANSAKCIJA *isti_id = malloc(t*sizeof(TRANSAKCIJA));
         if (sadrzi(novi_niz,niz_t[i].Id,z)) {
             free(isti_id);
             continue;
         }
-        isti_id[n++] = niz_t[i];
+        isti_id[_n++] = niz_t[i];
         for (int j = i+1; j<t;j++) {
             if (niz_t[i].Id == niz_t[j].Id)
-                isti_id[n++]= niz_t[j];
+                isti_id[_n++]= niz_t[j];
         }
         TRANSAKCIJA _t;
         _t.Kolicina = 0;
         int _suma = 0;
-        for (int j = 0;j<n;j++) {
+        for (int j = 0;j<_n;j++) {
             _suma += (int)isti_id[j].Kolicina * isti_id[j].Promena;
         }
         if (_suma < 0)
@@ -338,19 +338,9 @@ void sumarna_transakciona_datoteka(char *putanja,TRANSAKCIJA** vraceni_niz, int*
     *vraceni_niz = novi_niz;
     *n = z;
     for (int _i = 0;_i< *n;_i++) {
-        fwrite(&vraceni_niz[_i],sizeof(TRANSAKCIJA),1,fajl);
+        fwrite(&novi_niz[_i],sizeof(TRANSAKCIJA),1,fajl);
     }
-
-
-    for (int x = 0; x< z;x++) {
-        char mod[6];
-        if (novi_niz[x].Promena == ULAZ) strlcpy(mod,"ULAZ",sizeof(mod));
-        else strlcpy(mod,"IZLAZ",sizeof(mod));
-
-        printf("%u, %s, %d\n",novi_niz[x].Id,mod,novi_niz[x].Kolicina);
-
-    }
-
+    fclose(fajl);
     free(niz_p);
     free(niz_t);
 
@@ -365,7 +355,6 @@ void update(char* putanja) {
 
     TRANSAKCIJA *sumarni_niz;
     int s = 0;
-    sumarna_transakciona_datoteka(putanja,&sumarni_niz,&s);
-
+    sumarna_transakciona_datoteka(&sumarni_niz,&s);
     free(sumarni_niz);
 }

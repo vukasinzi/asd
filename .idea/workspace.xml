@@ -30,9 +30,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/transakciona.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/transakciona.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/old/tran_050126.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +144,7 @@
       <workItem from="1767436557661" duration="1322000" />
       <workItem from="1767444367596" duration="15000" />
       <workItem from="1767450175344" duration="879000" />
-      <workItem from="1767599635681" duration="21783000" />
+      <workItem from="1767599635681" duration="22528000" />
     </task>
     <servers />
   </component>
