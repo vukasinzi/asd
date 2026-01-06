@@ -71,13 +71,27 @@ bool unisti_datoteku(char* putanja) {
 }
 bool insert_u_izvestaj_proizvod(char* putanja,PROIZVOD* proizvod_) {
     FILE *fajl = fopen(putanja, "a");
-    if (fajl == NULL || fprintf(fajl, "Id: %u, Naziv: %s, KOL: %u\n", proizvod_->Id, proizvod_->Naziv, proizvod_->Kolicina) != 1) {
+    if (fajl == NULL || fprintf(fajl, "Id: %u, Naziv: %s, Kolicina: %u\n", proizvod_->Id, proizvod_->Naziv, proizvod_->Kolicina) != 1) {
         fclose(fajl);
         return false;
     }
     fclose(fajl);
     return true;
+}
+void insert_u_izvestaj_greska(char* putanja,PROIZVOD* p_,TRANSAKCIJA* t_,char greska[]) {
+    FILE *fajl = fopen(putanja, "a");
+    char *promena = (t_->Promena == ULAZ) ? "ULAZ" : "IZLAZ";
+    if (strcmp(greska,"Nepostojeci proizvod") == 0) {
+        if (fajl == NULL || fprintf(fajl, "Id: %u, Naziv: X, Kolicina: X, Tip: %s(-), Kolicina: %u, Greska: %s\n", t_->Id,promena,t_->Kolicina,greska) != 1) {
+            fclose(fajl);
 
+        }
+    }
+    else if (strcmp(greska,"Nepostojeca kolicina proizvoda") == 0) {
+        if (fajl == NULL || fprintf(fajl, "Id: %u, Naziv: %s, Kolicina: %u, Tip:%s , Kolicina: %u, Greska: %s\n", p_->Id,p_->Naziv,p_->Kolicina,promena,t_->Kolicina,greska) != 1) {
+            fclose(fajl);
+        }
+    }
 }
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod_) {
     if (!postoji(putanja))
@@ -376,8 +390,10 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
         int pozicija = 0;
         if (!sadrzi_p(maticni_niz, sumarni_niz[i].Id, p, &pozicija)) {
             if (sumarni_niz[i].Promena == IZLAZ) {
-                //OBRADA GRESKE DA NE POSTOJI TAJ ELEMENT KOJI ISKA
+                //OBRADA GRESKE DA NE POSTOJI TAJ ELEMENT KOJI SE TRAZI.
+                insert_u_izvestaj_greska(err_pro_rpt,&maticni_niz[i],&sumarni_niz[i],"Nepostojeci proizvod");
                 izbaci_element_t(&sumarni_niz, i, &s);
+
             } else {
                 //OVDE TREBA DODATI U MATICNU DATOTEKU PROIZVOD.
                 char naziv[14];
@@ -400,7 +416,7 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
                 temp.Id = sumarni_niz[i].Id;
                 strcpy(temp.Naziv, naziv);
                 temp.Kolicina = sumarni_niz[i].Kolicina;
-                if (!postoji(nov_pro_rpt)) {
+                if (!postoji(nov_pro_rpt)) {//nov proizvod
                     kreiraj_izvestaj(nov_pro_rpt);
                     insert_u_izvestaj_proizvod(nov_pro_rpt, &temp);
                 }
@@ -416,13 +432,14 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
                 //slcuaj kada je sve normalno
                 nadjen = true;
                 int pozicija = 0;
-
-                novi_niz[n++] = maticni_niz[i];
                 int suma = (int) novi_niz[n - 1].Kolicina + (int) sumarni_niz[j].Kolicina * sumarni_niz[j].Promena;
-                if (suma >= 0)
+                if (suma >= 0) {
+                    novi_niz[n++] = maticni_niz[i];
                     novi_niz[n - 1].Kolicina = suma;
-                else {
+                }else {
                     //greska, ima manje od ukupne kolicine
+                    insert_u_izvestaj_greska(err_kol_rpt,&maticni_niz[i],&sumarni_niz[i],"Nepostojeca kolicina proizvoda");
+                    novi_niz[n++] = maticni_niz[i];
                 }
                 break;
             }

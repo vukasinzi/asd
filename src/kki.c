@@ -21,7 +21,6 @@ void menu_ispis(const Menu m)
             puts("* 2 - demo za drugi slucaj azuriranja *");
             puts("* Datum: dd.mm.2022. *");
             puts("* Autor: Vukašin Živaljević vz20220281@student.fon.bg.ac.rs *");
-            puts("* Autor: Lazar Stojanović ls20220164@student.fon.bg.ac.rs *");
             puts("* Mentor: Saša D. Lazarević, slazar@fon.rs *");
             puts("************************************************************");
             puts("GLAVNI MENI");
@@ -155,7 +154,7 @@ void transakcioni_podmeni(int izbor) {
                 puts("ERROR: Greska pri citanju transakcione datoteke.");
             break;
         default:
-            puts("Selektujte odgovarajucu opciju.");
+            puts("ERROR: Selektujte odgovarajucu opciju.");
             break;
 
     }
@@ -258,7 +257,7 @@ void maticni_podmeni(int izbor) {
                 puts("ERROR: Greska pri citanju maticne datoteke.");
             break;
         default:
-            puts("Selektujte odgovarajucu opciju.");
+            puts("ERROR: Selektujte odgovarajucu opciju.");
             break;
 
     }
@@ -281,7 +280,7 @@ void pomoc_podmeni(int izbor) {
             puts("o nama");
             break;
         default:
-            puts("Selektujte odgovarajucu opciju.");
+            puts("ERROR: Selektujte odgovarajucu opciju.");
             break;
 
     }
@@ -320,7 +319,7 @@ void menu() {
                         stanje = pomocni_meni;
                         continue;
                     default:
-                        puts("Selektujte odgovarajuci meni.");
+                        puts("ERROR: Selektujte odgovarajuci meni.");
                         continue;
                 }
 

@@ -41,5 +41,4 @@ typedef struct transakcija {
 } TRANSAKCIJA;
 
 
-
 #endif
