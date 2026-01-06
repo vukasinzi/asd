@@ -87,7 +87,7 @@ void transakcioni_podmeni(int izbor) {
             trenutno = 0;
             return;
         case 1: //create trans dat
-            if (kreiraj_datoteku(tran_dat))
+            if (kreiraj_datoteku(tran_dat,false))
                 puts("INFO: Transakciona datoteka je kreirana.");
             else
                 puts("ERROR: Transakciona datoteka nije kreirana.");
@@ -170,7 +170,7 @@ void maticni_podmeni(int izbor) {
             trenutno = 0;
             return;
         case 1:
-            if (kreiraj_datoteku(mat_dat))
+            if (kreiraj_datoteku(mat_dat,false))
                 puts("INFO: Maticna datoteka je kreirana.");
             else
                 puts("ERROR: Maticna datoteka nije kreirana.");

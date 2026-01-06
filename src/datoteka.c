@@ -41,8 +41,15 @@ bool postoji(char * putanja) {
     fclose(fajl);
     return true;
 }
-bool kreiraj_datoteku(char* putanja) {
-    if (postoji(putanja)) {
+bool kreiraj_izvestaj(char *putanja) {
+    FILE *fajl = fopen(putanja,"a");
+    if (fajl == NULL)
+        return false;
+    fclose(fajl);
+    return true;
+}
+bool kreiraj_datoteku(char* putanja,bool flag) {
+    if (postoji(putanja) && flag == false) {
         char c;
         printf("Datoteka vec postoji, pregaziti je?(d/n)");
         if (scanf(" %c",&c)!=1) return false;
@@ -62,10 +69,19 @@ bool unisti_datoteku(char* putanja) {
         return true;
     }return false;
 }
+bool insert_u_izvestaj_proizvod(char* putanja,PROIZVOD* proizvod_) {
+    FILE *fajl = fopen(putanja, "a");
+    if (fajl == NULL || fprintf(fajl, "Id: %u, Naziv: %s, KOL: %u\n", proizvod_->Id, proizvod_->Naziv, proizvod_->Kolicina) != 1) {
+        fclose(fajl);
+        return false;
+    }
+    fclose(fajl);
+    return true;
 
+}
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod_) {
     if (!postoji(putanja))
-        kreiraj_datoteku(putanja);
+        kreiraj_datoteku(putanja,false);
 
     FILE *fajl = fopen(putanja, "rb");
     PROIZVOD p;
@@ -90,7 +106,7 @@ bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod_) {
 }
 bool insert_u_datoteku_tran(char* putanja, TRANSAKCIJA* transakcija) {
     if (!postoji(putanja))
-        kreiraj_datoteku(putanja);
+        kreiraj_datoteku(putanja,false);
     FILE *fajl = fopen(putanja, "ab");
     if (fajl == NULL || fwrite(transakcija, sizeof(TRANSAKCIJA), 1, fajl) != 1) {
         fclose(fajl);
@@ -354,15 +370,42 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
     PROIZVOD *novi_niz = malloc((p + s) * sizeof(PROIZVOD));
     int n = 0;
 
-
-    for (int i = s-1; i >= 0; i--) {
+    PROIZVOD *novi_proizvodi = malloc(s * sizeof(PROIZVOD));
+    int _privremeni = 0;
+    for (int i = s - 1; i >= 0; i--) {
         int pozicija = 0;
         if (!sadrzi_p(maticni_niz, sumarni_niz[i].Id, p, &pozicija)) {
             if (sumarni_niz[i].Promena == IZLAZ) {
                 //OBRADA GRESKE DA NE POSTOJI TAJ ELEMENT KOJI ISKA
-                izbaci_element_t(&sumarni_niz,i,&s);
+                izbaci_element_t(&sumarni_niz, i, &s);
             } else {
                 //OVDE TREBA DODATI U MATICNU DATOTEKU PROIZVOD.
+                char naziv[14];
+                bool flag = false;
+                while (flag == false) {
+                    printf("INFO: Proizvod sa Id: %u ne postoji u maticnoj datoteci. Unesite naziv: ");
+                    if (!fgets(naziv, sizeof naziv, stdin)) {
+                        puts("ERROR: Pogresan format. pokusajte ponovo.");
+                        continue;
+                    }
+                    if (!strchr(naziv, '\n')) {
+                        puts("ERROR: Predugacak naziv (14). pokusajte ponovo.");
+                        ocisti_bafer();
+                        continue;
+                    }
+                    naziv[strcspn(naziv, "\n")] = '\0';
+                    flag = true;
+                }
+                PROIZVOD temp;
+                temp.Id = sumarni_niz[i].Id;
+                strcpy(temp.Naziv, naziv);
+                temp.Kolicina = sumarni_niz[i].Kolicina;
+                if (!postoji(nov_pro_rpt)) {
+                    kreiraj_izvestaj(nov_pro_rpt);
+                    insert_u_izvestaj_proizvod(nov_pro_rpt, &temp);
+                }
+
+                novi_proizvodi[_privremeni++] = temp;
             }
         }
     }
@@ -387,10 +430,14 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
         if (!nadjen)
             novi_niz[n++] = maticni_niz[i];
     }
-    for (int _i = 0; _i < n;_i++)
-    {
-        insert_u_datoteku(mat_nova,&novi_niz[_i]);
+    for (int _i = 0; _i < _privremeni; _i++) {
+        novi_niz[n++] = novi_proizvodi[_i];
     }
+    kreiraj_datoteku(mat_nova,true);
+    for (int _i = 0; _i < n; _i++) {
+        insert_u_datoteku(mat_nova, &novi_niz[_i]);
+    }
+    free(novi_proizvodi);
     free(maticni_niz);
     free(novi_niz);
 }
@@ -408,4 +455,5 @@ void update(char* putanja) {
     sumarna_transakciona_datoteka(&sumarni_niz,&s);
     spoji_sa_maticnom(sumarni_niz,s);
     free(sumarni_niz);
+    ucitaj_sve(mat_dat,NULL, NULL);
 }

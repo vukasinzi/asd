@@ -27,22 +27,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/old/mat_060126.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/old/tran_060126.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-eebd3da96a0c985f4424.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2026-01-05T11-35-00-0623.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-main-Debug-223b360345f7446e1865.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-624c8bea6d4b1c051903.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-eebd3da96a0c985f4424.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2026-01-05T18-06-15-0053.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2026-01-06T15-43-57-0453.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-main-Debug-2977d09917a200683dab.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-main-Debug-223b360345f7446e1865.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/util.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/util.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/maticna.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/maticna.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/old/mat_050126.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/old/tran_050126.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transakciona.dat" beforeDir="false" afterPath="$PROJECT_DIR$/data/transakciona.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/datoteka.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/datoteka.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/util.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +124,7 @@
     "nodejs_package_manager_path": "npm",
     "org.rust.first.attach.projects": "true",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -155,7 +161,7 @@
       <workItem from="1767436557661" duration="1322000" />
       <workItem from="1767444367596" duration="15000" />
       <workItem from="1767450175344" duration="879000" />
-      <workItem from="1767599635681" duration="33517000" />
+      <workItem from="1767599635681" duration="38883000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@
 
 
 void podesi_pathove(const char* date);
-bool kreiraj_datoteku(char* putanja);
+bool kreiraj_datoteku(char* putanja,bool flag);
 bool unisti_datoteku(char* putanja);
 
 bool insert_u_datoteku(char* putanja, PROIZVOD* proizvod_);
@@ -24,9 +24,10 @@ bool ucitaj_Id_tran(char* putanja,unsigned id);
 
 bool obrisi_Id(char* putanja,unsigned id);
 void sortiraj_fajl(char* putanja,size_t velicina_sloga,Vrsta v);
-void ocisti_bafer();
 
 void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s);
 void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n);
 void update();
+
+void ocisti_bafer();
 #endif
