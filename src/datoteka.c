@@ -471,6 +471,7 @@ void update(char* putanja) {
     int s = 0;
     sumarna_transakciona_datoteka(&sumarni_niz,&s);
     spoji_sa_maticnom(sumarni_niz,s);
+    kreiraj_datoteku(tran_dat,true);
     free(sumarni_niz);
     ucitaj_sve(mat_dat,NULL, NULL);
 }
