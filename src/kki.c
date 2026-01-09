@@ -7,6 +7,97 @@
 #include "misc.h"
 
 int trenutno = 0;
+
+void ispis_azuriranje()
+{
+    puts("Naziv projekta: ASD1");
+    puts("");
+
+    puts("Problem:");
+    puts("- oblast: klasicna obrada podataka (obrada podataka zasnovana na datotekama)");
+    puts("(file-based data processing)");
+    puts("- tema: azuriranje serijske (sortirane redne) datoteke (ASD)");
+    puts("(updating a serial /sorted regular/ file)");
+    puts("");
+
+    puts("Zahtev:");
+    puts("Neophodno je resiti problem azuriranja serijske datoteke.");
+    puts("Date su dve datoteke:");
+    puts("(1) maticna datoteka, koja sadrzi podatke o proizvodima");
+    puts("(identifikator, naziv i kolicina)");
+    puts("i");
+    puts("(2) transakciona datoteka, koja sadrzi podatke o nastalim promenama");
+    puts("nad proizvodima.");
+    puts("");
+
+    puts("Maticna datoteka je uredjena (sortirana) po identifikatoru proizvoda,");
+    puts("u rastucem redosledu (sortirana redna datoteka).");
+    puts("");
+
+    puts("U transakcionu datoteku se hronoloski upisuju promene");
+    puts("obavljene nad proizvodima (redna datoteka).");
+    puts("ULAZ znaci primanje novih proizvoda (povecanje kolicine),");
+    puts("a IZLAZ znaci izdavanje postojecih proizvoda (smanjenje kolicine).");
+    puts("Ova datoteka nije uredjena.");
+    puts("");
+
+    puts("Kada se zavrsi sa upisom promena u transakcionu datoteku");
+    puts("(recimo na kraju dana), kreira se nova transakciona datoteka");
+    puts("koja sadrzi sumarne podatke o nastalim promenama.");
+    puts("");
+
+    puts("Na primer, za proizvod Id = 40 su se u toku dana desile sledece promene:");
+    puts("ULAZ 20, IZLAZ 30, ULAZ 40, IZLAZ 50.");
+    puts("");
+
+    puts("U sumarnoj transakcionoj datoteci (datoteci dnevnih promena,");
+    puts("krace: datoteci promena) naci ce se samo jedan slog");
+    puts("za proizvod Id = 40: IZLAZ 20.");
+    puts("");
+
+    puts("Na isti nacin ce se kreirati po jedan slog za sve proizvode");
+    puts("za koje su se desile promene u jednom danu.");
+    puts("");
+
+    puts("Datoteka promena je uredjena po identifikatoru proizvoda,");
+    puts("kao i maticna datoteka (sortirana redna datoteka).");
+    puts("");
+
+    puts("Sada se moze pristupiti azuriranju maticne datoteke,");
+    puts("koje se obavlja dnevno.");
+    puts("");
+
+    puts("Moguci su sledeci dogadjaji:");
+    puts("D.1. Pokusava se azuriranje proizvoda koji postoji u maticnoj datoteci");
+    puts("D.2. Pokusava se azuriranje proizvoda koji ne postoji u maticnoj datoteci");
+    puts("D.3. Pokusava se povecanje kolicine proizvoda");
+    puts("D.4. Pokusava se smanjenje kolicine proizvoda");
+    puts("");
+
+    puts("Koji mogu da imaju sledece ishode:");
+    puts("I.1. Uspesan pokusaj azuriranja:");
+    puts("proizvod se azurira, a poruka o nastaloj promeni");
+    puts("se upisuje u odgovarajucu datoteku");
+    puts("");
+
+    puts("I.2. Neuspesan pokusaj azuriranja:");
+    puts("prijavljuje se greska, a poruka o razlogu nastale greske");
+    puts("se upisuje u odgovarajucu datoteku");
+    puts("");
+
+    puts("Na osnovu prethodnog, uocavamo sledece slucajeve azuriranja:");
+    puts("1. Osnovni slucaj");
+    puts("2. Nepostojeca kolicina");
+    puts("(izdavanje nepostojece kolicine postojeceg proizvoda)");
+    puts("3. Nov proizvod");
+    puts("(prijem kolicine nepostojeceg proizvoda)");
+    puts("4. Nepostojeci proizvod");
+    puts("(izdavanje kolicine nepostojeceg proizvoda)");
+    puts("5. Sveobuhvatni slucaj");
+
+}
+
+
 void menu_ispis(const Menu m)
 {
     switch (m) {
@@ -73,6 +164,7 @@ void menu_ispis(const Menu m)
             puts("3. O nama");
 
             break;
+        
     }
 }
 
@@ -271,13 +363,17 @@ void pomoc_podmeni(int izbor) {
             trenutno = 0;
             return;
         case 1: //o azuriranju
-            puts("o azuriranju");
+            ispis_azuriranje();
             break;
         case 2: //demo
-            puts("demo");
+            stanje = glavni_meni;
+            trenutno = 0;
+            stanje = pomoc_podmeni;
+            trenutno = 1;
             break;
         case 3: //o nama
-            puts("o nama");
+            puts("Софтверски инжењер: <Вукашин Живаљевић>, <vz20220281@student.fon.bg.ac.rs> <student fakulteta organizacionih nauka>.");
+            puts("Доменски инжењер : Саша Д. Лазаревић, <slazar@fon.rs>.");
             break;
         default:
             puts("ERROR: Selektujte odgovarajucu opciju.");

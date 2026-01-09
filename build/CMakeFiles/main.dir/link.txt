@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/main.dir/src/datoteka.c.o CMakeFiles/main.dir/src/kki.c.o CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/misc.c.o CMakeFiles/main.dir/src/util.c.o -o main 
