@@ -30,14 +30,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/misc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +154,7 @@
       <workItem from="1767971268708" duration="802000" />
       <workItem from="1768050807157" duration="6217000" />
       <workItem from="1768067737448" duration="126000" />
-      <workItem from="1768067955500" duration="3071000" />
+      <workItem from="1768067955500" duration="3719000" />
     </task>
     <servers />
   </component>
