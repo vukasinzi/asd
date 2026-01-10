@@ -27,25 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="821b74cf-b802-4899-adac-1df313be6673" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/demo/demo_maticna.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/demo_tran1.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/demo_tran2.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2026-01-06T15-43-57-0453.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/datoteka.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/kki.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/src/misc.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/kki.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/kki.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/misc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/datoteka.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/datoteka.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kki.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/kki.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/misc.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +148,7 @@
       <workItem from="1767599635681" duration="40170000" />
       <workItem from="1767720862017" duration="3374000" />
       <workItem from="1767971268708" duration="802000" />
-      <workItem from="1768050807157" duration="5569000" />
+      <workItem from="1768050807157" duration="6217000" />
     </task>
     <servers />
   </component>
