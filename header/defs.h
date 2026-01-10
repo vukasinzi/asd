@@ -21,7 +21,8 @@ typedef enum menu {
     glavni_meni,
     transakcioni_meni,
     maticni_meni,
-    pomocni_meni
+    pomocni_meni,
+    demo_podmeni,
 }Menu;
 typedef enum promena {
     IZLAZ = -1,

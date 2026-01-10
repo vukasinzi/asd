@@ -10,4 +10,5 @@ int poredi_tran(const void *a,const void *b);
 int poredi_proiz(const void *a,const void *b);
 int parsiraj_argumente(int argc,char* argv[]);
 void podesi_meni(int arg);
+void ucitaj(int izbor);
 #endif
