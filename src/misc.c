@@ -69,22 +69,26 @@ int parsiraj_argumente(int argc,char* argv[]) {
     //printf("%s\n",arg);
 }
 void podesi_meni(const int arg) {
-        kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
     switch (arg) {
         case 1:
             kopiraj_datoteku("../demo/demo_tran1.dat",tran_dat);
+            kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
             break;
         case 2:
             kopiraj_datoteku("../demo/demo_tran2.dat",tran_dat);
+            kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
             break;
         case 3:
             kopiraj_datoteku("../demo/demo_tran3.dat",tran_dat);
+            kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
             break;
         case 4:
             kopiraj_datoteku("../demo/demo_tran4.dat",tran_dat);
+            kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
             break;
         case 5:
             kopiraj_datoteku("../demo/demo_tran5.dat",tran_dat);
+            kopiraj_datoteku("../demo/demo_maticna.dat",mat_dat);
             break;
         default:
             break;

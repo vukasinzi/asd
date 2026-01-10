@@ -2,6 +2,7 @@
 #define DATOTEKA_H
 #include <stdbool.h>
 #include "defs.h"
+#include <stddef.h>
 
 #ifdef _WIN32
 #define SEP "\\"
@@ -25,7 +26,7 @@ bool ucitaj_Id_tran(char* putanja,unsigned id);
 bool obrisi_Id(char* putanja,unsigned id);
 void sortiraj_fajl(char* putanja,size_t velicina_sloga,Vrsta v);
 
-void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s);
+void spoji_sa_maticnom(TRANSAKCIJA **sumarni_niz, int *s);
 void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n);
 void update();
 
