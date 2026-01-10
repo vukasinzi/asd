@@ -17,6 +17,7 @@ char err_kol_rpt[256];
 char nov_pro_rpt[256];
 char err_pro_rpt[256];
 
+
 void ocisti_bafer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
@@ -32,8 +33,8 @@ void podesi_pathove(const char *date) {
     snprintf(err_kol_rpt, sizeof err_kol_rpt, "..%srpt%serr_kol_%s.rpt", SEP, SEP, date);
     snprintf(nov_pro_rpt, sizeof nov_pro_rpt, "..%srpt%snov_pro_%s.rpt", SEP, SEP, date);
     snprintf(err_pro_rpt, sizeof err_pro_rpt, "..%srpt%serr_pro_%s.rpt", SEP, SEP, date);
-
 }
+
 bool postoji(char * putanja) {
     FILE* fajl = fopen(putanja,"rb");
     if (fajl == NULL)
@@ -171,7 +172,6 @@ bool ucitaj_sve(char* putanja,PROIZVOD** niz_p,int *i) {
             niz = tmp;
         }
         niz[(*i)++] = p;
-
     }
     fclose(fajl);
     if (niz_p != NULL)
@@ -205,9 +205,7 @@ bool ucitaj_sve_tran(char* putanja, TRANSAKCIJA** niz_t, int *i) {
             niz = tmp;
         }
         niz[(*i)++] = t;
-
     }
-
     if (niz_t != NULL)
         *niz_t = niz;
     fclose(fajl);
@@ -259,7 +257,6 @@ bool ucitaj_Id_tran(char* putanja,unsigned id) {
     free(t_niz);
     fclose(fajl);
     return true;
-
 }
 bool obrisi_Id(char* putanja,unsigned id) {
     if (!postoji(putanja))
@@ -324,7 +321,6 @@ void sortiraj_fajl(char* putanja,size_t velicina_sloga, const Vrsta v) {
     fclose(fajl);
     free(niz);
 }//update maticne
-
 void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n) {
     PROIZVOD *niz_p = NULL;
     TRANSAKCIJA *niz_t = NULL;
@@ -376,7 +372,6 @@ void sumarna_transakciona_datoteka(TRANSAKCIJA** vraceni_niz, int* n) {
 
 
 }
-
 void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
     PROIZVOD *maticni_niz;
     int p = 0;
@@ -458,9 +453,6 @@ void spoji_sa_maticnom(TRANSAKCIJA *sumarni_niz, int s) {
     free(maticni_niz);
     free(novi_niz);
 }
-
-
-
 void update(char* putanja) {
     if (!postoji(mat_dat) || !postoji(tran_dat)) {
         printf("Datoteke ne postoje.");

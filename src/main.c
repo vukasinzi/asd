@@ -1,13 +1,10 @@
-
-#include "kki.h"
 #include "misc.h"
+#include "kki.h"
 
 
-
-
-int main()
+int main(int argc, char *argv[])
 {
     podesavanje();
-    menu();
+    menu(parsiraj_argumente(argc,argv));
     return 0;
 }
