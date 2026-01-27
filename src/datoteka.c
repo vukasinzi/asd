@@ -415,8 +415,8 @@ void spoji_sa_maticnom(TRANSAKCIJA **sumarni_niz, int *s) {
                 temp.Kolicina = (*sumarni_niz)[i].Kolicina;
                 if (!postoji(nov_pro_rpt)) {//nov proizvod
                     kreiraj_izvestaj(nov_pro_rpt);
-                    insert_u_izvestaj_proizvod(nov_pro_rpt, &temp);
                 }
+                insert_u_izvestaj_proizvod(nov_pro_rpt, &temp);
                 novi_proizvodi[_privremeni++] = temp;
             }
         }
